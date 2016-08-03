@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "689162703640",
+    "firebase_url": "https://kwarti-3ab46.firebaseio.com",
+    "project_id": "kwarti-3ab46",
+    "storage_bucket": "kwarti-3ab46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689162703640:android:e08daeaa9bf928cd",
+        "android_client_info": {
+          "package_name": "com.kwarti.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689162703640-43iujeu8hoepgnl1700f0fo16v912lfn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADUi457mvdDFfQ_-uloisYr9iUrSZDv4c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
