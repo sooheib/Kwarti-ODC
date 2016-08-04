@@ -23,12 +23,25 @@
 
     <include layout="@layout/content_add_card" />
 
-   <!--<android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />-->
+      <android.support.design.widget.FloatingActionButton
+          app:backgroundTint="@color/green"
+           android:id="@+id/validate"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="bottom|end"
+           android:layout_margin="@dimen/fab_margin"
+           android:src="@drawable/icon_validate" />
+
+
+        <android.support.design.widget.FloatingActionButton
+            app:backgroundTint="@color/blue"
+            android:id="@+id/addphoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/icon_camera" />
+
+
 
 </android.support.design.widget.CoordinatorLayout>

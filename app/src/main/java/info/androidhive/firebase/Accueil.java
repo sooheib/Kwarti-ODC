@@ -21,6 +21,7 @@ public class Accueil extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     @Override

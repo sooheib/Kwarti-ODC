@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,4 +12,137 @@
     tools:context="info.androidhive.firebase.AddCardActivity"
     tools:showIn="@layout/app_bar_add_card">
 
-</RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/gris">
+
+            <EditText
+
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Your Name"
+                android:inputType="text"
+                android:textColorLink="@color/gris"
+                android:textColorHighlight="@color/gris"
+                android:textColor="@color/gris"
+                android:textColorHint="@color/gris" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/gris">
+
+            <EditText
+
+                android:id="@+id/CompanyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Company Name"
+                android:inputType="text"
+                android:textColorLink="@color/gris"
+                android:textColorHighlight="@color/gris"
+                android:textColor="@color/gris"
+                android:textColorHint="@color/gris" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orangebtn"
+            android:textColor="@color/white"
+            android:text="@string/scan_barcode"
+            android:onClick="scanBarcode"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/gris">
+
+            <EditText
+
+                android:id="@+id/numCarte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="or enter your card number"
+                android:inputType="text"
+                android:textColorLink="@color/gris"
+                android:textColorHighlight="@color/gris"
+                android:textColor="@color/gris"
+                android:textColorHint="@color/gris" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/gris">
+
+            <EditText
+
+                android:id="@+id/enseigne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Sign"
+                android:inputType="text"
+                android:textColorLink="@color/gris"
+                android:textColorHighlight="@color/gris"
+                android:textColor="@color/gris"
+                android:textColorHint="@color/gris" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/gris">
+
+            <EditText
+
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Description"
+                android:inputType="textMultiLine"
+                android:textColorLink="@color/gris"
+                android:textColorHighlight="@color/gris"
+                android:textColor="@color/gris"
+                android:textColorHint="@color/gris" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:src="@drawable/img_card" />
+
+
+
+
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>
