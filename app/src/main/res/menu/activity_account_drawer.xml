@@ -14,23 +14,24 @@
             android:icon="@drawable/icon_edit_user"
             android:title="Account" />
 
-        <item
-            android:id="@+id/addcarte"
-            android:icon="@drawable/icon_add_carte"
-            android:title="add a card" />
-        <!--
-
           <item
+             android:id="@+id/addcarte"
+             android:icon="@drawable/icon_add_carte"
+             android:title="add a card" />
+        <!--
+         <item
             android:id="@+id/editacounttest"
             android:icon="@drawable/icon_account"
             android:title="editaccounttest" />
+
+
         <item
              android:id="@+id/nav_manage"
              android:icon="@drawable/ic_menu_manage"
              android:title="Tools" />  -->
     </group>
 
-    <item android:title="autre">
+    <item android:title="Autre">
         <menu>
             <!--<item
                 android:id="@+id/nav_share"
@@ -44,3 +45,4 @@
     </item>
 
 </menu>
+

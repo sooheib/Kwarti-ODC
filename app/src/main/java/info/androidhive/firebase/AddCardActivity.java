@@ -2,7 +2,6 @@ package info.androidhive.firebase;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,18 +16,21 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Accueil extends AppCompatActivity
+public class AddCardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accueil);
+        setContentView(R.layout.activity_add_card);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         auth = FirebaseAuth.getInstance();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -45,28 +47,14 @@ public class Accueil extends AppCompatActivity
 
 
 
-
-
-        System.out.println("*********************************"+Email+"***********************************");
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
-
-
-
-
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-
-
-                Intent intent = new Intent(Accueil.this,AddCardActivity.class);
-                startActivity(intent);
-
-
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
-        });
+        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -91,7 +79,7 @@ public class Accueil extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.accueil, menu);
+        getMenuInflater().inflate(R.menu.add_card, menu);
         return true;
     }
 
@@ -116,30 +104,31 @@ public class Accueil extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         if (id == R.id.nav_account) {
 
 
-            Intent intent = new Intent(Accueil.this,AccountActivity.class);
+            Intent intent = new Intent(AddCardActivity.this,AccountActivity.class);
             startActivity(intent);
             this.finish();
 
         } else if (id == R.id.home) {
 
-            Intent intent = new Intent(Accueil.this,Accueil.class);
+            Intent intent = new Intent(AddCardActivity.this,Accueil.class);
             startActivity(intent);
             this.finish();
 
         } else if (id == R.id.logout) {
 
             signOut();
-            Intent intent = new Intent(Accueil.this,LoginActivity.class);
+            Intent intent = new Intent(AddCardActivity.this,LoginActivity.class);
             startActivity(intent);
             this.finish();
         }
 
         else if (id == R.id.addcarte) {
 
-            Intent intent = new Intent(Accueil.this,AddCardActivity.class);
+            Intent intent = new Intent(AddCardActivity.this,AddCardActivity.class);
             startActivity(intent);
             this.finish();
 
@@ -154,7 +143,9 @@ public class Accueil extends AppCompatActivity
         return true;
     }
 
+
     public void signOut() {
         auth.signOut();
     }
+
 }

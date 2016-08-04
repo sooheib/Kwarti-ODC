@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_profile"
@@ -42,6 +42,14 @@
         <activity
             android:name=".Accueil"
             android:label="@string/title_activity_accueil"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AccountActivity"
+            android:label="@string/title_activity_account"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddCardActivity"
+            android:label="@string/title_activity_add_card"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-
         <item
             android:id="@+id/home"
             android:icon="@drawable/icon_carte"
@@ -19,18 +18,19 @@
             android:icon="@drawable/icon_add_carte"
             android:title="add a card" />
         <!--
-
-          <item
+         <item
             android:id="@+id/editacounttest"
             android:icon="@drawable/icon_account"
             android:title="editaccounttest" />
+
+
         <item
              android:id="@+id/nav_manage"
              android:icon="@drawable/ic_menu_manage"
              android:title="Tools" />  -->
     </group>
 
-    <item android:title="autre">
+    <item android:title="Autre">
         <menu>
             <!--<item
                 android:id="@+id/nav_share"
