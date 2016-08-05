@@ -13,9 +13,26 @@ public class Card {
     private String emailUser;
     private String brand;
 
+
+
+    private int thumbnail;
+
+
     public Card() {
     }
+    public Card(String name, String companyName, int thumbnail) {
+        this.name = name;
+        this.companyName = companyName;
+        this.thumbnail = thumbnail;
+    }
 
+    public int getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(int thumbnail) {
+        this.thumbnail = thumbnail;
+    }
     public String getId() {
         return id;
     }
