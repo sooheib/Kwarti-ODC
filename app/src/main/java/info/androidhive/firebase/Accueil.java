@@ -18,6 +18,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +33,7 @@ public class Accueil extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    public ArrayAdapter<String> arrayadapter;
 
     private RecyclerView recyclerView;
     private CardAdapter adapter;
@@ -53,10 +55,10 @@ public class Accueil extends AppCompatActivity
         db= FirebaseDatabase.getInstance().getReference();
         helper = new FireBaseHelper(db);
 
-        
 
+        arrayadapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,helper.retrieve());
 
-
+       
 
 
 //**************

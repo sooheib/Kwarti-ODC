@@ -26,7 +26,6 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     DatabaseReference db;
     FireBaseHelper helper;
 
-    public ArrayAdapter<String> arrayadapter;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
