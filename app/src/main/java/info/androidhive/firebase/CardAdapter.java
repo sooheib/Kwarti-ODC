@@ -8,11 +8,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -20,9 +23,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     private Context mContext;
     private List<Card> albumList;
 
+    DatabaseReference db;
+    FireBaseHelper helper;
+
+    public ArrayAdapter<String> arrayadapter;
+
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, count;
         public ImageView thumbnail, overflow;
+
+
 
         public MyViewHolder(View view) {
             super(view);
@@ -35,8 +46,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
 
     public CardAdapter(Context mContext, List<Card> albumList) {
+        db= FirebaseDatabase.getInstance().getReference();
+        helper = new FireBaseHelper(db);
         this.mContext = mContext;
         this.albumList = albumList;
+
     }
 
     @Override

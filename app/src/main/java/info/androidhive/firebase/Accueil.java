@@ -22,6 +22,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,8 @@ public class Accueil extends AppCompatActivity
     private RecyclerView recyclerView;
     private CardAdapter adapter;
     private List<Card> albumList;
+    DatabaseReference db;
+    FireBaseHelper helper;
 
 
 
@@ -45,7 +49,21 @@ public class Accueil extends AppCompatActivity
         setContentView(R.layout.activity_accueil);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        db= FirebaseDatabase.getInstance().getReference();
+        helper = new FireBaseHelper(db);
+
+        
+
+
+
+
+
 //**************
+
+
+
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
