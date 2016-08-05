@@ -78,7 +78,7 @@
 
             <EditText
 
-                android:id="@+id/numCarte"
+                android:id="@+id/cardNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -97,11 +97,11 @@
 
             <EditText
 
-                android:id="@+id/enseigne"
+                android:id="@+id/brand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:hint="Sign"
+                android:hint="brand"
                 android:inputType="text"
                 android:textColorLink="@color/gris"
                 android:textColorHighlight="@color/gris"

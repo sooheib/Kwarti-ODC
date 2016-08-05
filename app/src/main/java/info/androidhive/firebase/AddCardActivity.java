@@ -17,13 +17,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -34,6 +38,20 @@ public class AddCardActivity extends AppCompatActivity
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
 
+    final static String DB_Url="https://appkwarti.firebaseio.com/";
+
+    EditText editName,editCompanyName,editCardNumber,editBrand,editDescription;
+
+
+    ListView lv;
+    ArrayAdapter<String> adapter;
+    DatabaseReference db;
+    FireBaseHelper helper;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +59,18 @@ public class AddCardActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+//Setup firebase
+
+        db= FirebaseDatabase.getInstance().getReference();
+        helper= new FireBaseHelper(db);
+
+
+
+        editCardNumber = (EditText) findViewById(R.id.cardNumber);
+        editName = (EditText) findViewById(R.id.Name);
+        editCompanyName = (EditText) findViewById(R.id.CompanyName);
+        editBrand = (EditText) findViewById(R.id.brand);
+        editDescription = (EditText) findViewById(R.id.description);
 
 
         auth = FirebaseAuth.getInstance();
@@ -62,8 +92,64 @@ public class AddCardActivity extends AppCompatActivity
         fabvalidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddCardActivity.this,Accueil.class);
-                startActivity(intent);
+
+
+
+                String name = editName.getText().toString();
+
+                String companyName = editCompanyName.getText().toString();
+
+                String cardNumber = editCardNumber.getText().toString();
+
+                String brand = editBrand.getText().toString();
+
+                String description = editDescription.getText().toString();
+
+
+
+                Card card= new Card();
+                card.setId("0");
+                card.setName(name);
+                card.setCompanyName(companyName);
+                card.setCardNumber(cardNumber);
+                card.setBrand(brand);
+                card.setDescription(description);
+                card.setEmailUser(user.getEmail());
+
+
+
+
+
+
+
+                if((name.length()>0 && name !=null) &&
+                        (companyName.length()>0 && name !=null) &&
+                        (cardNumber.length()>0 && name !=null) &&
+                        (brand.length()>0 && name !=null)){
+
+
+                    if(helper.save(card)){
+
+                        editName.setText("");
+                        editCompanyName.setText("");
+                        editCardNumber.setText("");
+                        editBrand.setText("");
+                        editDescription.setText("");
+                    }
+
+
+
+                }
+                else{
+                    Snackbar.make(view, " entrer tous les champs obligatoires !! ...", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+
+
+                }
+
+                /*Intent intent = new Intent(AddCardActivity.this,Accueil.class);
+                startActivity(intent);*/
+
 
             }
         });
@@ -105,6 +191,24 @@ public class AddCardActivity extends AppCompatActivity
 
 
 
+    private void addCard(String id,String name,String companyName,String cardNumber,String brand,String description,String emailUser){
+
+        Card card= new Card();
+        card.setId(id);
+        card.setName(name);
+        card.setCompanyName(companyName);
+        card.setCardNumber(cardNumber);
+        card.setBrand(brand);
+        card.setDescription(description);
+        card.setEmailUser(emailUser);
+
+
+    }
+
+
+
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -115,8 +219,8 @@ public class AddCardActivity extends AppCompatActivity
             } else {
                 Log.d("MainActivity", "Scanned");
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                EditText cardNumber = (EditText) findViewById(R.id.numCarte);
-                cardNumber.setText(result.getContents());
+
+                editCardNumber.setText(result.getContents());
 
 
             }
