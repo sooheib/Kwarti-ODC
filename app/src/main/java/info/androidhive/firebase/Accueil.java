@@ -18,13 +18,10 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +30,18 @@ public class Accueil extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    public ArrayAdapter<String> arrayadapter;
+
+
+    //___________________________  recycle variables _________________________________
+
 
     private RecyclerView recyclerView;
-    private CardAdapter adapter;
-    private List<Card> albumList;
-    DatabaseReference db;
-    FireBaseHelper helper;
+    private CardsAdapter adapter;
+    private List<Card> cardList;
 
 
+
+    //___________________________ ____________________ _________________________________
 
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
@@ -52,25 +52,14 @@ public class Accueil extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        db= FirebaseDatabase.getInstance().getReference();
-        helper = new FireBaseHelper(db);
 
 
-        arrayadapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,helper.retrieve());
-
-       
-
-
-//**************
-
-
-
-
+//___________________________  recycle init________ _________________________________
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        albumList = new ArrayList<>();
-        adapter = new CardAdapter(this, albumList);
+        cardList = new ArrayList<>();
+        adapter = new CardsAdapter(this, cardList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -80,6 +69,12 @@ public class Accueil extends AppCompatActivity
 
 
         //prepareCards();
+
+// ___________________________ ____________________ _________________________________
+
+
+
+
 
 
 
@@ -219,50 +214,52 @@ public class Accueil extends AppCompatActivity
 
     private void prepareCards() {
         int[] covers = new int[]{
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card,
-                R.drawable.img_card};
+                R.drawable.album1,
+                R.drawable.album2,
+                R.drawable.album3,
+                R.drawable.album4,
+                R.drawable.album5,
+                R.drawable.album6,
+                R.drawable.album7,
+                R.drawable.album8,
+                R.drawable.album9,
+                R.drawable.album10,
+                R.drawable.album11};
 
-        Card a = new Card("True Romance","company name1", covers[0]);
-        albumList.add(a);
+        Card a = new Card("card1", "card1", covers[0]);
+        cardList.add(a);
 
-        a = new Card("Xscpae", "company name1", covers[1]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[1]);
+        cardList.add(a);
 
-        a = new Card("Maroon 5", "company name1", covers[2]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[2]);
+        cardList.add(a);
 
-        a = new Card("Born to Die", "company name1", covers[3]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[3]);
+        cardList.add(a);
 
-        a = new Card("Honeymoon", "company name1", covers[4]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[4]);
+        cardList.add(a);
 
-        a = new Card("I Need a Doctor", "company name1", covers[5]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[5]);
+        cardList.add(a);
 
-        a = new Card("Loud", "company name1", covers[6]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[6]);
+        cardList.add(a);
 
-        a = new Card("Legend", "company name1", covers[7]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[7]);
+        cardList.add(a);
 
-        a = new Card("Hello", "company name1", covers[8]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[8]);
+        cardList.add(a);
 
-        a = new Card("Greatest Hits", "company name1", covers[9]);
-        albumList.add(a);
+        a = new Card("card1", "card1", covers[9]);
+        cardList.add(a);
 
         adapter.notifyDataSetChanged();
     }
+
+
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
         private int spanCount;
@@ -298,11 +295,12 @@ public class Accueil extends AppCompatActivity
         }
     }
 
-
+    /**
+     * Converting dp to pixel
+     */
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
-
 
 }

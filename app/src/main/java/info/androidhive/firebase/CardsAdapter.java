@@ -8,31 +8,29 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
+/**
+ * Created by yassi on 08/08/2016.
+ */
+public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolder> {
+
+
+
+
+
     private Context mContext;
-    private List<Card> albumList;
-
-    DatabaseReference db;
-    FireBaseHelper helper;
-
-
+    private List<Card> cardList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, count;
         public ImageView thumbnail, overflow;
-
-
 
         public MyViewHolder(View view) {
             super(view);
@@ -44,29 +42,26 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
     }
 
 
-    public CardAdapter(Context mContext, List<Card> albumList) {
-        db= FirebaseDatabase.getInstance().getReference();
-        helper = new FireBaseHelper(db);
+    public CardsAdapter(Context mContext, List<Card> cardList) {
         this.mContext = mContext;
-        this.albumList = albumList;
-
+        this.cardList = cardList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.album_card, parent, false);
+                .inflate(R.layout.card_card, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Card card = albumList.get(position);
+        Card card = cardList.get(position);
         holder.title.setText(card.getName());
         holder.count.setText(card.getCompanyName());
 
-        // loading album cover using Glide library
+        // loading card cover using Glide library
         Glide.with(mContext).load(card.getThumbnail()).into(holder.thumbnail);
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +79,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
         // inflate menu
         PopupMenu popup = new PopupMenu(mContext, view);
         MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_album, popup.getMenu());
+        inflater.inflate(R.menu.menu_card, popup.getMenu());
         popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
         popup.show();
     }
@@ -101,10 +96,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_add_favourite:
-                    Toast.makeText(mContext, "Add to favourite", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Details", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.action_play_next:
-                    Toast.makeText(mContext, "Play next", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "bare Code", Toast.LENGTH_SHORT).show();
                     return true;
                 default:
             }
@@ -114,6 +109,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return albumList.size();
+        return cardList.size();
     }
+
+
+
+
 }
