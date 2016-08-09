@@ -12,6 +12,34 @@
     tools:context="info.androidhive.firebase.Accueil"
     tools:showIn="@layout/app_bar_accueil">
 
+
+
+
+
+
+    <!--<com.rey.material.widget.ProgressView
+
+        android:id="@+id/pbHeaderProgress"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:pv_autostart="true"
+        app:pv_circular="true"
+        app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
+        app:pv_progressMode="indeterminate"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:indeterminate="false"
+        />
+-->
+
+
+
+
+
+
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"

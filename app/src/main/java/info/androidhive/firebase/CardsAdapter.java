@@ -75,6 +75,7 @@ public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolde
             public void onClick(View v) {
                 SharedInfo.cardShared=cardList.get(position);
 
+
                 Intent intent = new Intent(mContext,cardDetails.class);
 
                 mContext.startActivity(intent);

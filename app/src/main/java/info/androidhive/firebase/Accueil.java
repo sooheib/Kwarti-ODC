@@ -94,6 +94,7 @@ public class Accueil extends AppCompatActivity
         this.refreshData();
 
 
+
 //****************************
 
 
@@ -381,7 +382,7 @@ public class Accueil extends AppCompatActivity
 
             if(c.getEmailUser().equals(auth.getCurrentUser().getEmail())) {
                 cardList.add(c);
-                System.out.println("*********************** addddddddddeeeeeedddddddddd******************************************");
+
             }
         }
 
@@ -393,4 +394,9 @@ public class Accueil extends AppCompatActivity
             recyclerView.setAdapter(adapter);
         }
     }
+
+
+
+
+
 }
