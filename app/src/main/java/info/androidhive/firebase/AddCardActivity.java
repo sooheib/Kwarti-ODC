@@ -1,7 +1,13 @@
 package info.androidhive.firebase;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -11,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +39,35 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class AddCardActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+//_____________________________________camera el 5afeya_______________________________________
+
+
+
+    // Activity request codes
+    private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
+    private static final int CAMERA_CAPTURE_VIDEO_REQUEST_CODE = 200;
+    public static final int MEDIA_TYPE_IMAGE = 1;
+    public static final int MEDIA_TYPE_VIDEO = 2;
+
+    private static final String IMAGE_DIRECTORY_NAME = "Hello Camera";
+
+    private Uri fileUri; // file url to store image/video
+
+
+    Bitmap imagebit;
+
+
+//____________________________________________________________________________________________
+
 
 
     private FirebaseAuth.AuthStateListener authListener;
@@ -49,6 +84,7 @@ public class AddCardActivity extends AppCompatActivity
     FireBaseHelper helper;
     String cardbrFormat;
 
+    ImageView imageView;
 
 
 
@@ -58,6 +94,25 @@ public class AddCardActivity extends AppCompatActivity
         setContentView(R.layout.activity_add_card);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //_________________________________________ camera el 5afeya init _______________________
+
+
+        imageView = (ImageView) findViewById(R.id.imageView);
+
+        //________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Setup firebase
 
@@ -116,7 +171,17 @@ public class AddCardActivity extends AppCompatActivity
                 card.setDescription(description);
                 card.setEmailUser(user.getEmail());
                 card.setCardformat(cardbrFormat);
-                card.setThumbnail("thumbmail1");
+
+
+                //Bitmap bmp =  BitmapFactory.decodeResource(getResources(), R.drawable.img_card);//your image
+                ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                imagebit.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
+                imagebit.recycle();
+                byte[] byteArray = bYtE.toByteArray();
+                String imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+
+                card.setThumbnail(imageFile);
 
 
 
@@ -139,6 +204,12 @@ public class AddCardActivity extends AppCompatActivity
                         editDescription.setText("");
                         Intent intent = new Intent(AddCardActivity.this,Accueil.class);
                         startActivity(intent);
+
+
+
+
+
+
 
 
                     }
@@ -166,11 +237,22 @@ public class AddCardActivity extends AppCompatActivity
         addphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "will be added soon add a photo ", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+
+                captureImage();
+
+
+               /* Snackbar.make(view, "ya3tikom nam w 7ara 3dham hayka tzedet", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
             }
         });
-
+        if (!isDeviceSupportCamera()) {
+            Toast.makeText(getApplicationContext(),
+                    "Sorry! Your device doesn't support camera",
+                    Toast.LENGTH_LONG).show();
+            // will close the app if the device does't have camera
+            finish();
+        }
 
 
 
@@ -230,13 +312,63 @@ public class AddCardActivity extends AppCompatActivity
                 cardbrFormat = result.getFormatName();
 
             }
-        } else {
+        }
+
+
+
+
+       else  if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                // successfully captured the image
+                // display it in image view
+                previewCapturedImage();
+            } else if (resultCode == RESULT_CANCELED) {
+                // user cancelled Image capture
+                Toast.makeText(getApplicationContext(),
+                        "User cancelled image capture", Toast.LENGTH_SHORT)
+                        .show();
+            } else {
+                // failed to capture image
+                Toast.makeText(getApplicationContext(),
+                        "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
+
+
+
+
+
+        else {
             // This is important, otherwise the result will not be passed to the fragment
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
+    private void previewCapturedImage() {
+        try {
+            // hide video preview
 
+
+            imageView.setVisibility(View.VISIBLE);
+
+            // bimatp factory
+            BitmapFactory.Options options = new BitmapFactory.Options();
+
+            // downsizing image as it throws OutOfMemory Exception for larger
+            // images
+            options.inSampleSize =1;
+
+            final Bitmap bitmap = BitmapFactory.decodeFile(fileUri.getPath(),
+                    options);
+
+            imageView.setImageBitmap(bitmap);
+            imagebit = bitmap;
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
@@ -398,5 +530,106 @@ public class AddCardActivity extends AppCompatActivity
     public void signOut() {
         auth.signOut();
     }
+
+
+    private boolean isDeviceSupportCamera() {
+        if (getApplicationContext().getPackageManager().hasSystemFeature(
+                PackageManager.FEATURE_CAMERA)) {
+            // this device has a camera
+            return true;
+        } else {
+            // no camera on this device
+            return false;
+        }
+    }
+
+
+
+
+    private void captureImage() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+        fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+
+        // start the image capture Intent
+        startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
+    }
+
+    public Uri getOutputMediaFileUri(int type) {
+        return Uri.fromFile(getOutputMediaFile(type));
+    }
+
+
+    private static File getOutputMediaFile(int type) {
+
+        // External sdcard location
+        File mediaStorageDir = new File(
+                Environment
+                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                IMAGE_DIRECTORY_NAME);
+
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d(IMAGE_DIRECTORY_NAME, "Oops! Failed create "
+                        + IMAGE_DIRECTORY_NAME + " directory");
+                return null;
+            }
+        }
+
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                Locale.getDefault()).format(new Date());
+        File mediaFile;
+        if (type == MEDIA_TYPE_IMAGE) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator
+                    + "IMG_" + timeStamp + ".jpg");
+        } else if (type == MEDIA_TYPE_VIDEO) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator
+                    + "VID_" + timeStamp + ".mp4");
+        } else {
+            return null;
+        }
+
+        return mediaFile;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // save file url in bundle as it will be null on scren orientation
+        // changes
+        outState.putParcelable("file_uri", fileUri);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // get the file url
+        fileUri = savedInstanceState.getParcelable("file_uri");
+    }
+
+
+    private void recordVideo() {
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+
+        fileUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+
+        // set video quality
+        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file
+        // name
+
+        // start the video capture Intent
+        startActivityForResult(intent, CAMERA_CAPTURE_VIDEO_REQUEST_CODE);
+    }
+
+
+
 
 }
