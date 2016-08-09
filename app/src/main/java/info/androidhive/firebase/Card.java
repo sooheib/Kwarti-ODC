@@ -1,5 +1,4 @@
 package info.androidhive.firebase;
-
 /**
  * Created by yassi on 05/08/2016.
  */
@@ -9,28 +8,45 @@ public class Card {
     private String name;
     private String companyName;
     private String cardNumber;
+
+
+
+    private String cardformat;
     private String description;
     private String emailUser;
     private String brand;
 
 
 
-    private int thumbnail;
+    private String thumbnail;
 
 
     public Card() {
     }
-    public Card(String name, String companyName, int thumbnail) {
+    public Card(String name, String companyName, String thumbnail) {
         this.name = name;
         this.companyName = companyName;
         this.thumbnail = thumbnail;
     }
 
-    public int getThumbnail() {
+
+
+    public String getCardformat() {
+        return cardformat;
+    }
+
+    public void setCardformat(String cardformat) {
+        this.cardformat = cardformat;
+    }
+
+
+
+
+    public String getThumbnail() {
         return thumbnail;
     }
 
-    public void setThumbnail(int thumbnail) {
+    public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
     public String getId() {

@@ -22,12 +22,27 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Accueil extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    //___________________________ Fire Base_______________________________________
+
+
+    final static String DB_Url="https://appkwarti.firebaseio.com/";
+    DatabaseReference db;
+
+    FireBaseHelper helper;
+
+    //___________________________________________________________________________________________________
+
 
 
 
@@ -37,7 +52,7 @@ public class Accueil extends AppCompatActivity
 
     private RecyclerView recyclerView;
     private CardsAdapter adapter;
-    private List<Card> cardList;
+    private ArrayList<Card> cardList;
 
 
 
@@ -65,17 +80,18 @@ public class Accueil extends AppCompatActivity
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(1, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
 
 
         //prepareCards();
 
 // ___________________________ ____________________ _________________________________
 
+        db= FirebaseDatabase.getInstance().getReference();
+        helper= new FireBaseHelper(db);
 
 
-
-
+        this.refreshData();
 
 
 //****************************
@@ -210,7 +226,7 @@ public class Accueil extends AppCompatActivity
         auth.signOut();
     }
 
-
+/*
 
     private void prepareCards() {
         int[] covers = new int[]{
@@ -257,7 +273,7 @@ public class Accueil extends AppCompatActivity
         cardList.add(a);
 
         adapter.notifyDataSetChanged();
-    }
+    }*/
 
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
@@ -303,4 +319,78 @@ public class Accueil extends AppCompatActivity
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
+
+
+    private void refreshData(){
+
+        db.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+
+                getUpdates(dataSnapshot);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                getUpdates(dataSnapshot);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+
+    private void getUpdates(DataSnapshot dataSnapshot){
+
+        cardList.clear();
+
+        for(DataSnapshot ds : dataSnapshot.getChildren()){
+
+
+
+
+                Card c = new Card();
+
+
+
+                c.setName(ds.getValue(Card.class).getName());
+
+                c.setCardNumber(ds.getValue(Card.class).getCardNumber());
+                c.setCardformat(ds.getValue(Card.class).getCardformat());
+                c.setCompanyName(ds.getValue(Card.class).getCompanyName());
+                c.setDescription(ds.getValue(Card.class).getDescription());
+                c.setEmailUser(ds.getValue(Card.class).getEmailUser());
+                c.setBrand(ds.getValue(Card.class).getBrand());
+                c.setId(ds.getValue(Card.class).getId());
+                c.setThumbnail(ds.getValue(Card.class).getThumbnail());
+
+            if(c.getEmailUser().equals(auth.getCurrentUser().getEmail())) {
+                cardList.add(c);
+                System.out.println("*********************** addddddddddeeeeeedddddddddd******************************************");
+            }
+        }
+
+        if(cardList.size()>0){
+
+        adapter = new CardsAdapter(Accueil.this,cardList);
+
+
+            recyclerView.setAdapter(adapter);
+        }
+    }
 }

@@ -72,11 +72,11 @@ public class AccountActivity extends AppCompatActivity
         btnChangeEmail = (Button) findViewById(R.id.change_email_button);
         btnChangePassword = (Button) findViewById(R.id.change_password_button);
         btnSendResetEmail = (Button) findViewById(R.id.sending_pass_reset_button);
-        btnRemoveUser = (Button) findViewById(R.id.remove_user_button);
+       // btnRemoveUser = (Button) findViewById(R.id.remove_user_button);
         changeEmail = (Button) findViewById(R.id.changeEmail);
         changePassword = (Button) findViewById(R.id.changePass);
         sendEmail = (Button) findViewById(R.id.send);
-        remove = (Button) findViewById(R.id.remove);
+       // remove = (Button) findViewById(R.id.remove);
         signOut = (Button) findViewById(R.id.sign_out);
 
         oldEmail = (EditText) findViewById(R.id.old_email);
@@ -91,7 +91,7 @@ public class AccountActivity extends AppCompatActivity
         changeEmail.setVisibility(View.GONE);
         changePassword.setVisibility(View.GONE);
         sendEmail.setVisibility(View.GONE);
-        remove.setVisibility(View.GONE);
+       // remove.setVisibility(View.GONE);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -115,7 +115,7 @@ public class AccountActivity extends AppCompatActivity
                 changeEmail.setVisibility(View.VISIBLE);
                 changePassword.setVisibility(View.GONE);
                 sendEmail.setVisibility(View.GONE);
-                remove.setVisibility(View.GONE);
+              //  remove.setVisibility(View.GONE);
             }
         });
 
@@ -155,7 +155,7 @@ public class AccountActivity extends AppCompatActivity
                 changeEmail.setVisibility(View.GONE);
                 changePassword.setVisibility(View.VISIBLE);
                 sendEmail.setVisibility(View.GONE);
-                remove.setVisibility(View.GONE);
+              //  remove.setVisibility(View.GONE);
             }
         });
 
@@ -200,7 +200,7 @@ public class AccountActivity extends AppCompatActivity
                 changeEmail.setVisibility(View.GONE);
                 changePassword.setVisibility(View.GONE);
                 sendEmail.setVisibility(View.VISIBLE);
-                remove.setVisibility(View.GONE);
+               // remove.setVisibility(View.GONE);
             }
         });
 
@@ -229,7 +229,7 @@ public class AccountActivity extends AppCompatActivity
             }
         });
 
-        btnRemoveUser.setOnClickListener(new View.OnClickListener() {
+       /* btnRemoveUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
@@ -251,7 +251,7 @@ public class AccountActivity extends AppCompatActivity
                             });
                 }
             }
-        });
+        });*/
 
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override

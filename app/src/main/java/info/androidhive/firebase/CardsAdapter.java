@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by yassi on 08/08/2016.
@@ -26,7 +26,7 @@ public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolde
 
 
     private Context mContext;
-    private List<Card> cardList;
+    private ArrayList<Card> cardList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, count;
@@ -42,7 +42,7 @@ public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolde
     }
 
 
-    public CardsAdapter(Context mContext, List<Card> cardList) {
+    public CardsAdapter(Context mContext, ArrayList<Card> cardList) {
         this.mContext = mContext;
         this.cardList = cardList;
     }
@@ -60,6 +60,9 @@ public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolde
         Card card = cardList.get(position);
         holder.title.setText(card.getName());
         holder.count.setText(card.getCompanyName());
+
+            PicassoClient.downloadImage(mContext, card.getThumbnail(), holder.thumbnail);
+
 
         // loading card cover using Glide library
         Glide.with(mContext).load(card.getThumbnail()).into(holder.thumbnail);

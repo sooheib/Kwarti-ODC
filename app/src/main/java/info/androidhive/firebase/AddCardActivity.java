@@ -47,7 +47,7 @@ public class AddCardActivity extends AppCompatActivity
     ArrayAdapter<String> adapter;
     DatabaseReference db;
     FireBaseHelper helper;
-
+    String cardbrFormat;
 
 
 
@@ -115,6 +115,8 @@ public class AddCardActivity extends AppCompatActivity
                 card.setBrand(brand);
                 card.setDescription(description);
                 card.setEmailUser(user.getEmail());
+                card.setCardformat(cardbrFormat);
+                card.setThumbnail("thumbmail1");
 
 
 
@@ -135,6 +137,10 @@ public class AddCardActivity extends AppCompatActivity
                         editCardNumber.setText("");
                         editBrand.setText("");
                         editDescription.setText("");
+                        Intent intent = new Intent(AddCardActivity.this,Accueil.class);
+                        startActivity(intent);
+
+
                     }
 
 
@@ -221,7 +227,7 @@ public class AddCardActivity extends AppCompatActivity
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
 
                 editCardNumber.setText(result.getContents());
-
+                cardbrFormat = result.getFormatName();
 
             }
         } else {
@@ -287,6 +293,15 @@ public class AddCardActivity extends AppCompatActivity
                 displayToast();
             }
         }
+
+
+
+
+
+
+
+
+
     }
 
 

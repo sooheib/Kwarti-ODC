@@ -104,6 +104,7 @@ return card;
             String description= ds.getValue(Card.class).getDescription();
             String emailUser= ds.getValue(Card.class).getEmailUser();
 
+
             card.add(brand);
             card.add(cardNumber);
             card.add(companyName);
