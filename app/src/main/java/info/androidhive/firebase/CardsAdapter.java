@@ -1,6 +1,7 @@
 package info.androidhive.firebase;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.PopupMenu;
@@ -25,7 +26,7 @@ public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolde
 
 
 
-
+    public Card cardenvoyer;
     private Context mContext;
     private ArrayList<Card> cardList;
 
@@ -57,8 +58,9 @@ public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolde
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         Card card = cardList.get(position);
+
         holder.title.setText(card.getName());
         holder.count.setText(card.getCompanyName());
 
@@ -68,7 +70,16 @@ public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolde
         holder.thumbnail.setImageBitmap(bitmap);
            // PicassoClient.downloadImage(mContext, card.getThumbnail(), holder.thumbnail);
 
+        holder.thumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedInfo.cardShared=cardList.get(position);
 
+                Intent intent = new Intent(mContext,cardDetails.class);
+
+                mContext.startActivity(intent);
+            }
+        });
 
 
 
@@ -110,6 +121,14 @@ public class CardsAdapter  extends RecyclerView.Adapter<CardsAdapter.MyViewHolde
             switch (menuItem.getItemId()) {
                 case R.id.action_add_favourite:
                     Toast.makeText(mContext, "Details", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
+
                     return true;
                 case R.id.action_play_next:
                     Toast.makeText(mContext, "bare Code", Toast.LENGTH_SHORT).show();

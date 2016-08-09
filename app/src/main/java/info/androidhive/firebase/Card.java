@@ -1,8 +1,9 @@
 package info.androidhive.firebase;
+
 /**
  * Created by yassi on 05/08/2016.
  */
-public class Card {
+public class Card  {
 
     private String id;
     private String name;
@@ -103,5 +104,18 @@ public class Card {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "name='" + name + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", cardformat='" + cardformat + '\'' +
+                ", description='" + description + '\'' +
+                ", brand='" + brand + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
+                '}';
     }
 }

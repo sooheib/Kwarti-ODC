@@ -9,14 +9,9 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-
-
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-
-
 
     <application
         android:allowBackup="true"
@@ -59,6 +54,10 @@
         <activity
             android:name=".AddCardActivity"
             android:label="@string/title_activity_add_card"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".cardDetails"
+            android:label="@string/title_activity_card_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

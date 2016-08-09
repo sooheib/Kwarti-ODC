@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="info.androidhive.firebase.cardDetails"
+    tools:showIn="@layout/activity_card_details">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+
+          <TextView
+              android:paddingTop="40dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="@dimen/text_margin"
+              android:text="Company Name :"
+              android:textSize="20dp"/>
+
+
+          <TextView
+              android:id="@+id/detailCompanyName"
+              android:paddingTop="40dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="@dimen/text_margin"
+              android:text="Carrefour" />
+
+
+
+      </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="20dp"
+                android:paddingTop="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="Name :" />
+
+            <TextView
+                android:id="@+id/detailName"
+                android:paddingTop="40dp"
+                android:paddingLeft="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="Yassine hadj ali" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="20dp"
+                android:paddingTop="120dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="Brand :" />
+
+
+            <TextView
+                android:id="@+id/detailBrand"
+                android:paddingTop="40dp"
+                android:paddingLeft="91dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="carte fid Carrefour" />
+
+
+
+        </LinearLayout>
+
+
+
+
+            <TextView
+                android:textSize="20dp"
+                android:paddingTop="160dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:text="Description :" />
+
+
+
+        <TextView
+
+            android:id="@+id/detailDesciption"
+            android:paddingTop="190dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="ceci est une carte fidelite pour les etudiants de esprit" />
+
+
+
+
+
+        <ImageView
+            android:id="@+id/imageDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="50dp"
+            android:layout_marginTop="270dp"
+            android:src="@drawable/img_card" />
+
+
+
+
+
+
+
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

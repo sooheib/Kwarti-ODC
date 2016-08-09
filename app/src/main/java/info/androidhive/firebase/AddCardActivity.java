@@ -161,6 +161,10 @@ public class AddCardActivity extends AppCompatActivity
                 String description = editDescription.getText().toString();
 
 
+                if((name.length()>0 && name !=null && imagebit!=null) &&
+                        (companyName.length()>0 && name !=null) &&
+                        (cardNumber.length()>0 && name !=null) &&
+                        (brand.length()>0 && name !=null)){
 
                 Card card= new Card();
                 card.setId("0");
@@ -174,6 +178,9 @@ public class AddCardActivity extends AppCompatActivity
 
 
                 //Bitmap bmp =  BitmapFactory.decodeResource(getResources(), R.drawable.img_card);//your image
+
+
+
                 ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
                 imagebit.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
                 imagebit.recycle();
@@ -189,10 +196,7 @@ public class AddCardActivity extends AppCompatActivity
 
 
 
-                if((name.length()>0 && name !=null) &&
-                        (companyName.length()>0 && name !=null) &&
-                        (cardNumber.length()>0 && name !=null) &&
-                        (brand.length()>0 && name !=null)){
+
 
 
                     if(helper.save(card)){
@@ -218,7 +222,7 @@ public class AddCardActivity extends AppCompatActivity
 
                 }
                 else{
-                    Snackbar.make(view, " entrer tous les champs obligatoires !! ...", Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, " entrer tous les champs obligatoires !! ...ou ajouter une photo", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
 
