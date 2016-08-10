@@ -6,32 +6,24 @@
 
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:src="@drawable/img_card"
-        android:id="@+id/imageView" />
+
 
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:gravity="center_vertical|end"
         android:orientation="horizontal"
         android:padding="8dp">
 
-        <TextView
+        <ImageView
+            android:layout_width="370dp"
+            android:layout_height="500dp"
+            android:rotation="90"
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:height="48dp"
-            android:padding="5dp"
-
-            android:text="Card Number Bare Code"
-
-            android:id="@+id/bareCardNumber" />
+            android:src="@drawable/img_card"
+            android:id="@+id/imageView" />
 
     </LinearLayout>
 

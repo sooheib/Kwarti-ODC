@@ -18,6 +18,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,7 +46,7 @@ public class Accueil extends AppCompatActivity
 
 
 
-
+    private ProgressBar progressBar;
 
     //___________________________  recycle variables _________________________________
 
@@ -68,7 +69,7 @@ public class Accueil extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 //___________________________  recycle init________ _________________________________
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -92,8 +93,9 @@ public class Accueil extends AppCompatActivity
 
 
 
+     //   progressBar.setVisibility(View.VISIBLE);
         this.refreshData();
-
+        recyclerView.setAdapter(adapter);
 //****************************
 
 
@@ -357,6 +359,8 @@ public class Accueil extends AppCompatActivity
 
     private void getUpdates(DataSnapshot dataSnapshot){
 
+     //   progressBar.setVisibility(View.INVISIBLE);
+
         cardList.clear();
 
         for(DataSnapshot ds : dataSnapshot.getChildren()){
@@ -390,7 +394,7 @@ public class Accueil extends AppCompatActivity
         adapter = new CardsAdapter(Accueil.this,cardList);
 
 
-            recyclerView.setAdapter(adapter);
+
         }
     }
 
