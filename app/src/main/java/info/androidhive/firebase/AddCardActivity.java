@@ -361,7 +361,7 @@ public class AddCardActivity extends AppCompatActivity
 
             // downsizing image as it throws OutOfMemory Exception for larger
             // images
-            options.inSampleSize =1;
+            options.inSampleSize =5;
 
             final Bitmap bitmap = BitmapFactory.decodeFile(fileUri.getPath(),
                     options);

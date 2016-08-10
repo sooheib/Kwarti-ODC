@@ -91,9 +91,8 @@ public class Accueil extends AppCompatActivity
         helper= new FireBaseHelper(db);
 
 
+
         this.refreshData();
-
-
 
 //****************************
 

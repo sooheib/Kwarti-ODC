@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, Accueil.class));
-            finish();
+            Intent intent = new Intent(LoginActivity.this,Accueil.class);
+            startActivity(intent);
         }
 
         // set the view now
