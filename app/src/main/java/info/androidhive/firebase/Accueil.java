@@ -93,9 +93,10 @@ public class Accueil extends AppCompatActivity
 
 
 
-     //   progressBar.setVisibility(View.VISIBLE);
-        this.refreshData();
-        recyclerView.setAdapter(adapter);
+        progressBar.setVisibility(View.VISIBLE);
+
+
+
 //****************************
 
 
@@ -114,7 +115,7 @@ public class Accueil extends AppCompatActivity
 
 
 
-
+        this.refreshData();
 
 
         System.out.println("*********************************"+Email+"***********************************");
@@ -162,6 +163,8 @@ public class Accueil extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.accueil, menu);
+
+
         return true;
     }
 
@@ -174,6 +177,10 @@ public class Accueil extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            finish();
+            startActivity(getIntent());
+
             return true;
         }
 
@@ -355,11 +362,13 @@ public class Accueil extends AppCompatActivity
         });
 
 
+
+
     }
 
     private void getUpdates(DataSnapshot dataSnapshot){
 
-     //   progressBar.setVisibility(View.INVISIBLE);
+       progressBar.setVisibility(View.INVISIBLE);
 
         cardList.clear();
 
@@ -392,10 +401,11 @@ public class Accueil extends AppCompatActivity
         if(cardList.size()>0){
 
         adapter = new CardsAdapter(Accueil.this,cardList);
-
-
+            recyclerView.setAdapter(adapter);
 
         }
+
+
     }
 
 

@@ -88,7 +88,42 @@
                 android:textColorHighlight="@color/gris"
                 android:textColor="@color/gris"
                 android:textColorHint="@color/gris" />
+
+
+
         </android.support.design.widget.TextInputLayout>
+
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/gris">
+
+            <EditText
+
+                android:id="@+id/cardFormat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="or enter your Format Card"
+                android:inputType="text"
+                android:textColorLink="@color/gris"
+                android:textColorHighlight="@color/gris"
+                android:textColor="@color/gris"
+                android:textColorHint="@color/gris" />
+
+
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
+
+
+
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"

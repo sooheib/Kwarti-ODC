@@ -58,7 +58,7 @@ public class AddCardActivity extends AppCompatActivity
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
 
-    private static final String IMAGE_DIRECTORY_NAME = "Hello Camera";
+    private static final String IMAGE_DIRECTORY_NAME = "Kwarti";
 
     private Uri fileUri; // file url to store image/video
 
@@ -75,14 +75,13 @@ public class AddCardActivity extends AppCompatActivity
 
     final static String DB_Url="https://appkwarti.firebaseio.com/";
 
-    EditText editName,editCompanyName,editCardNumber,editBrand,editDescription;
+    EditText editName,editCompanyName,editCardNumber,editBrand,editDescription,editCardFormat;
 
 
     ListView lv;
     ArrayAdapter<String> adapter;
     DatabaseReference db;
     FireBaseHelper helper;
-    String cardbrFormat;
 
     ImageView imageView;
 
@@ -126,6 +125,7 @@ public class AddCardActivity extends AppCompatActivity
         editCompanyName = (EditText) findViewById(R.id.CompanyName);
         editBrand = (EditText) findViewById(R.id.brand);
         editDescription = (EditText) findViewById(R.id.description);
+        editCardFormat = (EditText) findViewById(R.id.cardFormat);
 
 
         auth = FirebaseAuth.getInstance();
@@ -160,8 +160,11 @@ public class AddCardActivity extends AppCompatActivity
 
                 String description = editDescription.getText().toString();
 
+                String cardFormat = editCardFormat.getText().toString();
 
-                if((name.length()>0 && name !=null && imagebit!=null) &&
+
+
+                if((name.length()>0 && name !=null) &&
                         (companyName.length()>0 && name !=null) &&
                         (cardNumber.length()>0 && name !=null) &&
                         (brand.length()>0 && name !=null)){
@@ -174,21 +177,44 @@ public class AddCardActivity extends AppCompatActivity
                 card.setBrand(brand);
                 card.setDescription(description);
                 card.setEmailUser(user.getEmail());
-                card.setCardformat(cardbrFormat);
+                card.setCardformat(cardFormat);
 
 
                 //Bitmap bmp =  BitmapFactory.decodeResource(getResources(), R.drawable.img_card);//your image
 
 
-
-                ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
-                imagebit.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
-                imagebit.recycle();
-                byte[] byteArray = bYtE.toByteArray();
-                String imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                    if(imagebit!=null){
 
 
-                card.setThumbnail(imageFile);
+                        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                        imagebit.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
+                        imagebit.recycle();
+                        byte[] byteArray = bYtE.toByteArray();
+                        String imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+
+
+                        card.setThumbnail(imageFile);
+
+                    }
+                    else{
+
+                        Bitmap icon = BitmapFactory.decodeResource(getResources(),
+                                R.drawable.img_card);
+
+                        ByteArrayOutputStream bYtE = new ByteArrayOutputStream();
+                        icon.compress(Bitmap.CompressFormat.PNG, 100, bYtE);
+                        icon.recycle();
+                        byte[] byteArray = bYtE.toByteArray();
+                        String imageFile = Base64.encodeToString(byteArray, Base64.DEFAULT);
+
+                        card.setThumbnail(imageFile);
+
+                    }
+
+
+
+
 
 
 
@@ -204,6 +230,7 @@ public class AddCardActivity extends AppCompatActivity
                         editName.setText("");
                         editCompanyName.setText("");
                         editCardNumber.setText("");
+                        editCardFormat.setText("");
                         editBrand.setText("");
                         editDescription.setText("");
                         Intent intent = new Intent(AddCardActivity.this,Accueil.class);
@@ -224,6 +251,8 @@ public class AddCardActivity extends AppCompatActivity
                 else{
                     Snackbar.make(view, " entrer tous les champs obligatoires !! ...ou ajouter une photo", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+
+
 
 
                 }
@@ -312,8 +341,10 @@ public class AddCardActivity extends AppCompatActivity
                 Log.d("MainActivity", "Scanned");
                 Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
 
+
                 editCardNumber.setText(result.getContents());
-                cardbrFormat = result.getFormatName();
+                editCardFormat.setText(result.getFormatName());
+
 
             }
         }
@@ -368,6 +399,8 @@ public class AddCardActivity extends AppCompatActivity
 
             imageView.setImageBitmap(bitmap);
             imagebit = bitmap;
+
+
 
         } catch (NullPointerException e) {
             e.printStackTrace();
