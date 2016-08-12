@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Kwarti.iml" filepath="$PROJECT_DIR$/Kwarti.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kwarti-ODC.iml" filepath="$PROJECT_DIR$/Kwarti-ODC.iml" />
       <module fileurl="file://$PROJECT_DIR$/KwartiPVF.iml" filepath="$PROJECT_DIR$/KwartiPVF.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

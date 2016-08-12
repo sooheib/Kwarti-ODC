@@ -6,18 +6,18 @@
         <item
             android:id="@+id/home"
             android:icon="@drawable/icon_carte"
-            android:title="Mes Cartes" />
+            android:title="@string/menu_card" />
 
 
         <item
             android:id="@+id/nav_account"
             android:icon="@drawable/icon_edit_user"
-            android:title="Account" />
+            android:title="@string/menu_account" />
 
           <item
              android:id="@+id/addcarte"
              android:icon="@drawable/icon_add_carte"
-             android:title="add a card" />
+             android:title="@string/menu_addcard" />
         <!--
          <item
             android:id="@+id/editacounttest"
@@ -31,7 +31,7 @@
              android:title="Tools" />  -->
     </group>
 
-    <item android:title="Autre">
+    <item android:title="@string/menu_other">
         <menu>
             <!--<item
                 android:id="@+id/nav_share"
@@ -40,7 +40,7 @@
             <item
                 android:id="@+id/logout"
                 android:icon="@drawable/icon_logout"
-                android:title="Logout" />
+                android:title="@string/menu_logout" />
         </menu>
     </item>
 

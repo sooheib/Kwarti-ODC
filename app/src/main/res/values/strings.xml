@@ -159,6 +159,14 @@
 
 
 
+    <string name="menu_card">My Cards</string>
+    <string name="menu_account">Account</string>
+    <string name="menu_addcard">Add a card</string>
+    <string name="menu_other">Other</string>
+    <string name="menu_logout">Logout</string>
+
+
+
 
 
 

@@ -69,4 +69,11 @@
     <string name="scan_brand1">Enseigne :</string>
     <string name="scan_description1">Description :</string>
 
+
+    <string name="menu_card">Mes cartes</string>
+    <string name="menu_account">Compte</string>
+    <string name="menu_addcard">Ajouter une carte</string>
+    <string name="menu_other">Autre</string>
+    <string name="menu_logout">Se déconnecter</string>
+
 </resources>
