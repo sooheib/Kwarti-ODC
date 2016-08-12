@@ -28,7 +28,7 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
-    <string name="title_activity_accueil">Accueil</string>
+    <string name="title_activity_accueil">Home</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -141,6 +141,26 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
+
+    <string name="scan_name">Your Name</string>
+    <string name="scan_company">Company Name</string>
+    <string name="scan_cardn">Or enter your card number</string>
+    <string name="scan_format">Or enter your Format Card</string>
+    <string name="scan_brand">Brand</string>
+    <string name="scan_description">Description</string>
+
+    <string name="scan_name1">Your Name :</string>
+    <string name="scan_company1">Company Name :</string>
+    <string name="scan_cardn1">Or enter your card number :</string>
+    <string name="scan_format1">Or enter your Format Card :</string>
+    <string name="scan_brand1">Brand :</string>
+    <string name="scan_description1">Description :</string>
+
+
+
+
+
 
 
 </resources>

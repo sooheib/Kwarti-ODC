@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Kwarti</string>
+    <string name="action_sign_in_short">Inscription</string>
+    <string name="email">Email</string>
+    <string name="minimum_password">Mot de passe trop court, entrez 6 caractères minimum!</string>
+    <string name="auth_failed">L\'authentification a échoué, vérifiez votre email et votre mot de passe ou vous inscrire</string>
+    <string name="change_email">Changer l\'email</string>
+    <string name="change_password">Changer le mot de passe</string>
+    <string name="send_password_reset_email">Envoyer le mot de passe</string>
+    <string name="remove_user">Supprimer l\'utilisateur</string>
+    <string name="new_pass">nouveau mot de passe</string>
+    <string name="title_activity_profile">Kwarti</string>
+    <string name="title_activity_login">se connecter</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="hint_name">Nom complet</string>
+    <string name="btn_login">Authentification</string>
+    <string name="btn_link_to_register">Pas un membre? Être inscrit dans Kwarti maintenant!</string>
+    <string name="btn_link_to_login">Déjà enregistré. Connectez-moi!</string>
+    <string name="title_activity_reset_password">Réinitialiser le mot de passe</string>
+    <string name="btn_forgot_password">Mot de passe oublié?</string>
+    <string name="btn_reset_password">réinitialiser le mot de passe</string>
+    <string name="btn_back"><![CDATA[<< Home]]></string>
+    <string name="hint_new_email">nouveau email</string>
+    <string name="btn_change">Changement</string>
+    <string name="btn_send">Envoyer</string>
+    <string name="btn_remove">Retirer</string>
+    <string name="btn_sign_out">Se déconnecter</string>
+    <string name="lbl_forgot_password">mot de passe oublié?</string>
+    <string name="forgot_password_msg">Nous avons juste besoin de votre marque Email Id de vous envoyer des instructions de réinitialisation mot de passe.</string>
+    <string name="title_activity_accueil">Accueil</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Rafraîchir</string>
+    <string name="title_activity_account">Mon compte</string>
+    <string name="title_activity_add_card">Ajouter Carte</string>
+
+
+    <string name="scan_barcode">scanner code a barre</string>
+    <string name="any_orientation">1D Any Orientation</string>
+    <string name="scan_from_fragment">Scan from fragment</string>
+    <string name="front_camera">Front Camera</string>
+    <string name="custom_activity">...</string>
+    <string name="toolbar_activity">Activity with Toolbar</string>
+    <string name="custom_scanner">Custom Scanner Activity</string>
+    <string name="scanner_with_margin">Scanner with Margin</string>
+    <string name="scanner_with_timeout">Finish Scan in 8 Seconds</string>
+    <string name="turn_on_flashlight">Turn on Flashlight</string>
+    <string name="turn_off_flashlight">Turn off Flashlight</string>
+    <string name="title_card_list">les cartes</string>
+    <string name="title_card_detail">Carte détaillée </string>
+    <string name="title_activity_card_details">Carte détaillée</string>
+
+    <string name="scan_name">Nom</string>
+    <string name="scan_company">Entreprise</string>
+    <string name="scan_cardn">Ou entrer le numéro du carte</string>
+    <string name="scan_format">Ou entrer le format du carte</string>
+    <string name="scan_brand">Enseigne</string>
+    <string name="scan_description">Description</string>
+
+    <string name="scan_name1">Nom :</string>
+    <string name="scan_company1">Entreprise :</string>
+    <string name="scan_cardn1">Le numéro du carte :</string>
+    <string name="scan_format1">Le format du carte :</string>
+    <string name="scan_brand1">Enseigne :</string>
+    <string name="scan_description1">Description :</string>
+
+</resources>

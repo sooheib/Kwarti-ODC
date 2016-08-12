@@ -22,7 +22,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_margin="@dimen/text_margin"
-              android:text="Company Name :"
+              android:text="@string/scan_company1"
               android:textSize="20dp"/>
 
 
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:text="Name :" />
+                android:text="@string/scan_name1" />
 
             <TextView
                 android:id="@+id/detailName"
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:text="Brand :" />
+                android:text="@string/scan_brand" />
 
 
             <TextView
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:text="Description :" />
+                android:text="@string/scan_description1" />
 
 
 
